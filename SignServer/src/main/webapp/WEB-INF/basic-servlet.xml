@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/websocket
+       http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+
+    <context:component-scan base-package="com.uzpeng.sign.web"/>
+
+    <mvc:annotation-driven />
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+        <mvc:mapping path="/**" />
+            <bean class="com.uzpeng.sign.interceptor.CrossSiteInterceptor" />
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/v1/login" />
+            <mvc:exclude-mapping path="/v1/student/**"/>  <!--学生接口权限判断并不一样，放行单独判断-->
+
+            <!--以下两个是测试需要开放的接口  正式上线需要将这两个注释-->
+            <mvc:exclude-mapping path="/" />
+            <mvc:exclude-mapping path="/check/**" />
+            <mvc:exclude-mapping path="/v1/check/**" />
+
+            <bean class="com.uzpeng.sign.interceptor.AuthenticatedInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <websocket:handlers allowed-origins="*">
+        <websocket:mapping path="/websocket/sign" handler="signHandler"/>
+        <websocket:handshake-interceptors>
+            <bean class="com.uzpeng.sign.interceptor.WebSocketInterceptor"/>
+        </websocket:handshake-interceptors>
+    </websocket:handlers>
+
+    <bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean">
+        <property name="maxTextMessageBufferSize" value="8192"/>
+        <property name="maxBinaryMessageBufferSize" value="8192"/>
+    </bean>
+
+    <bean id="signHandler" class="com.uzpeng.sign.net.SignWebSocketHandler"/>
+
+</beans>

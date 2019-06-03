@@ -1,0 +1,47 @@
+@import '../util';
+$ppl: ( 1:$lgBlue, 2:$lgLeaf, 3:$lgRed, 4:$lgMoon, 5:$lgYellow, 6:$lgPurple, 7:$lgMoss, 8:$lgSky, 9: $lgNight, 0:$lgDark );
+
+.courseCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-radius: 5px;
+  height: 180px;
+  // min-width: 300px;
+
+  @each $no, $color in $ppl {
+    &--bg#{$no} {
+        background: $color;
+     }
+  }
+
+  &__info {
+    color: #fff;
+    padding: 20px 0;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+    max-height: 72px;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  &__operation {
+    margin: 0;
+    padding: 4px 0 4px 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 28px;
+    color: #fff;
+
+    li:hover {
+      cursor: pointer;
+    }
+  }
+}

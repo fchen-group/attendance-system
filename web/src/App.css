@@ -1,0 +1,6 @@
+.ant-layout-content {
+  background-image: url(/source/hbg.jpeg);
+  /* background-size: 100% 100%; */
+  background-size: cover;
+  /* background-position: 50% 50%; */
+}

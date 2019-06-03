@@ -1,0 +1,48 @@
+.login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: url(/source/bg.jpg) center top;
+  background-size: cover;
+
+  &__footer {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+  }
+
+  &__form {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 400px;
+    background: rgba(255, 255, 255, .9);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    overflow: hidden;
+    z-index: 1;
+
+    h1 {
+      text-align: center;
+    }
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   bottom: 0;
+    //   right: 0;
+    //   margin: -30px;
+    //   background: url(/source/bg.jpg) center top;
+    //   background-size: cover;
+    //   background-attachment: fixed;
+    //   filter: blur(20px);
+    //   z-index: -1;
+    // }
+  }
+}

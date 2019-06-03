@@ -1,0 +1,31 @@
+.detailTable {
+  position: relative;
+
+  .exportBtn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+.operation__link {
+  display: inline-block;
+  width: 60px;
+
+  &--end {
+    color: hsl(0, 100%, 50%);
+
+    &:hover {
+      color: hsl(0, 100%, 65%);
+    }
+  }
+
+  &--delete {
+    cursor: pointer;
+    width: 20px;
+    color: rgba(#666, .6);
+
+    &:hover {
+      color: rgba(#666, 1);
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:component-scan base-package="com.uzpeng.sign.dao"/>
+    <context:component-scan base-package="com.uzpeng.sign.service"/>
+    <context:component-scan base-package="com.uzpeng.sign.config"/>
+    <context:component-scan base-package="com.uzpeng.sign.exception"/>
+
+    <bean id="crossSiteInterceptor" class="com.uzpeng.sign.interceptor.CrossSiteInterceptor"/>
+    <bean id="websocketHandler" class="com.uzpeng.sign.net.SignWebSocketHandler"/>
+    
+    <context:annotation-config />
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath*:email.properties</value>
+                <value>classpath*:database.properties</value>
+                <value>classpath*:redis.properties</value>
+                <value>classpath*:application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="springContext" class="com.uzpeng.sign.util.SpringContextUtil"/>
+
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties"/>
+    </bean>
+
+
+    <!--数据库配置-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close"
+          p:driverClassName="com.mysql.jdbc.Driver"
+          p:url="${database.jdbc.url}"
+          p:username="${database.username}"
+          p:password="${database.password}">
+
+
+        <property name="testWhileIdle"><value>true</value></property>
+        <property name="testOnBorrow"><value>false</value></property>
+        <property name="testOnReturn"><value>false</value></property>
+        <property name="validationQuery"><value>select * from validation</value></property>
+        <property name="validationQueryTimeout"><value>1</value></property>
+        <property name="timeBetweenEvictionRunsMillis"><value>30000</value></property>
+        <property name="numTestsPerEvictionRun"><value>20</value></property>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+          p:dataSource-ref="dataSource"/>
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.uzpeng.sign.persistence" />
+    </bean>
+
+</beans>

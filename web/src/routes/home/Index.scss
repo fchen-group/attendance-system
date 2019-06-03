@@ -1,0 +1,37 @@
+.home {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1600px;
+  min-height: calc(100vh - 64px);
+
+  &__content {
+    position: relative;
+    background-color: rgba(255, 255, 255, .9);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .2);
+  }
+
+  &__list {
+    margin: 0;
+    list-style: none;
+    padding: 30px 30px;
+  }
+
+  &__more {
+    padding-bottom: 10px;
+    text-align: center;
+  }
+
+  &__moreText {
+    cursor: pointer;
+    color: #1890ff;
+  }
+
+  &__btn {
+    &--add {
+      position: absolute;
+      top: 26px;
+      left: 260px;
+      z-index: 10;
+    }
+  }
+}

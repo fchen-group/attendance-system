@@ -1,0 +1,57 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.title {
+  margin-top: 100rpx;
+  display: flex;
+  align-items: center;
+}
+
+.title-icon {
+  display: inline-block;
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 10rpx;
+}
+
+.title-text {
+  font-size: 64rpx;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.userinfo-nickname {
+  font-size: 32rpx;
+  color: #aaa;
+}
+
+.userlogin {
+  width: 80%;
+  margin-top: 100rpx;
+}
+
+.userlogin input {
+  margin-bottom : 20rpx;
+  padding: 20rpx;
+  border: 1px solid #eee;
+  border-radius: 5rpx;
+}

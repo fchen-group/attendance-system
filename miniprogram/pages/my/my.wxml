@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="user-info">
+    <view class="content">
+      <view class="info">
+        <view class="name">{{name}}</view>
+        <view class="number">学号：{{studentNum}}</view>
+        <view class="class">班级：{{classInfo}}</view>
+      </view>
+      <view class="avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+    </view>
+  </view>
+  <view class="options">
+    <view class="option modify" bindtap="handleModifyPwd">修改密码</view>
+    <!-- <view class="option logout">退出</view> -->
+  </view>
+</view>

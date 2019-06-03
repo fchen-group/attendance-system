@@ -1,0 +1,177 @@
+group 'uzpeng'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: "com.bmuschko.tomcat"
+apply plugin: 'com.bmuschko.tomcat-base'
+
+sourceCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+war {
+    archiveName 'ROOT.war'
+}
+
+ext {
+    springVersion = "5.0.1.RELEASE"
+    mybatisVersion = "3.2.2"
+}
+
+/**
+ * 开发
+ */
+//tomcat{
+//    httpPort = 8088
+//    ajpPort = 8888
+//    stopPort = 8087
+//    contextPath = 'sign'
+//}
+
+/**
+ * 稳定版本
+ */
+tomcat{
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol  = 'org.apache.coyote.ajp.AjpNio2Protocol'
+
+
+    httpPort = 8080
+}
+
+
+buildscript{
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.bmuschko:gradle-tomcat-plugin:2.5"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+
+    /**
+     * 测试
+     */
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.testng', name: 'testng', version: '6.11'
+    testCompile "org.springframework:spring-test:$springVersion"
+
+    /**
+     * spring核心
+     */
+    compile "org.springframework:spring-context:$springVersion"
+
+    /**
+     * web
+     */
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    providedCompile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    providedCompile "javax.websocket:javax.websocket-api:1.1"
+    compile "org.springframework:spring-webmvc:$springVersion"
+    compile "org.springframework:spring-websocket:$springVersion"
+    compile "javax.el:javax.el-api:3.0.0"
+
+
+    /**
+     * 数据库
+     */
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.45'
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+    compile "org.springframework:spring-jdbc:$springVersion"
+
+
+    /**
+     * ORM框架
+     */
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.3.1'
+
+    /**
+     * 安全框架
+     */
+    compile "org.springframework.security:spring-security-web:$springVersion"
+    compile "org.springframework.security:spring-security-config:$springVersion"
+    compile "org.springframework.security:spring-security-oauth2-jose:$springVersion"
+
+    /**
+     * 序列化
+     */
+    compile group: 'org.json', name: 'json', version: '20160810'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+
+    /**
+     * 邮件
+     */
+    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.1'
+    compile "org.springframework:spring-context-support:$springVersion"
+
+    /**
+     * 二维码编码与解码
+     */
+    compile group: 'com.google.zxing', name: 'javase', version: '3.3.0'
+
+    /**
+     *事务动态代理支持库
+     */
+//    compile group: 'cglib', name: 'cglib', version: '3.2.6'
+
+    /**
+     * 日志
+     */
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.9.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.9.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.9.1'
+
+
+    /**
+     * 校验器
+     */
+    compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.7.Final'
+    compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
+
+
+    /**
+     * excel操作
+     * 
+     * <groupId>org.apache.poi</groupId>
+     * <artifactId>poi</artifactId>
+     * <version>3.10-FINAL</version>
+     */
+    compile group: 'org.apache.poi', name: 'poi', version: '3.17'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
+
+    /*
+        定时器
+     */
+    compile group: 'org.quartz-scheduler', name: 'quartz', version: '2.2.1'
+    compile group: 'org.quartz-scheduler', name: 'quartz-jobs', version: '2.2.1'
+
+
+
+    /**
+     * 汉字转拼音
+     */
+    compile group: 'com.belerweb', name: 'pinyin4j', version: '2.5.1'
+
+    /**
+     * 嵌入式tomcat
+     */
+    def tomcatVersion = '9.0.1'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:9.0.0.M6",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-websocket:${tomcatVersion}"
+}

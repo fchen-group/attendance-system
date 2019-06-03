@@ -1,0 +1,105 @@
+/**app.wxss**/
+.container {
+} 
+
+.color1 .title-tag {
+  background-color: hsl(80, 83.0%, 56%);
+}
+.color1 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(80, 83.0%, 36%);
+}
+.color1 .scan-icon {
+  color: hsl(80, 83.0%, 46%);
+}
+
+.color2 .title-tag {
+  background-color: hsl(219, 98%, 76%);
+}
+.color2 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(219, 98%, 56%);
+}
+.color2 .scan-icon {
+  color: hsl(219, 98%, 66%);
+}
+
+.color3 .title-tag {
+  background-color: hsl(150, 82%, 64%);
+}
+.color3 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(150, 82%, 44%);
+}
+.color3 .scan-icon {
+  color: hsl(150, 82%, 54%);
+}
+
+.color4 .title-tag {
+  background-color: hsl(324, 100%, 80%);
+}
+.color4 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(324, 100%, 60%);
+}
+.color4 .scan-icon {
+  color: hsl(324, 100%, 70%);
+}
+
+.color5 .title-tag {
+  background-color: hsl(254, 96%, 78%);
+}
+.color5 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(254, 96%, 58%);
+}
+.color5 .scan-icon {
+  color: hsl(254, 96%, 68%);
+}
+
+.color6 .title-tag {
+  background-color: hsl(109, 80%, 62%);
+}
+.color6 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(109, 80%, 42%);
+}
+.color6 .scan-icon {
+  color: hsl(109, 80%, 52%);
+}
+
+.color7 .title-tag {
+  background-color: hsl(182, 72%, 68%);
+}
+.color7 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(182, 72%, 48%);
+}
+.color7 .scan-icon {
+  color: hsl(182, 72%, 58%);
+}
+
+.color8 .title-tag {
+  background-color:hsl(204, 52%, 68%);
+}
+.color8 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(204, 52%, 48%);
+}
+.color8 .scan-icon {
+  color: hsl(204, 52%, 58%);
+}
+
+.color9 .title-tag {
+  background-color:hsl(115, 52%, 68%);
+}
+.color9 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(115, 52%, 48%);
+}
+.color9 .scan-icon {
+  color: hsl(115, 52%, 58%);
+}
+
+.color0 .title-tag {
+  background-color: hsl(190, 72%, 78%);
+}
+.color0 .scan-circle {
+  box-shadow: 0 0 50rpx hsl(190, 72%, 58%);
+}
+.color0 .scan-icon {
+  color: hsl(190, 72%, 78%);
+}
+
+

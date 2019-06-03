@@ -1,0 +1,61 @@
+.semester {
+  &__title {
+    position: relative;
+    margin-left: 20px;
+    font-size: 26px;
+    line-height: 30px;
+    margin-bottom: 30px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      width: 8px;
+      height: 30px;
+      background-color: #1890ff;
+    }
+  }
+
+  &__content {
+    padding-bottom: 20px;
+  }
+
+  &__tip {
+    margin-left: 20px;
+  }
+
+  .cardWrap {
+    margin: 5px 0;
+  }
+
+  &__example {
+    height: 180px;
+    padding: 0 20px;
+    border-radius: 5px;
+    border: 6px dashed #ccc;
+    text-align: center;
+    color: #ccc;
+    cursor: pointer;
+    transition: .2s all;
+
+    &:hover {
+      border-color: #bbb;
+      color: #bbb;
+    }
+
+    &::before {
+      content: '+';
+      display: block;
+      font-size: 80px;
+      line-height: 100px;
+      font-weight: 600;
+    }
+
+    &::after {
+      content: '添加课程';
+      display: block;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+}

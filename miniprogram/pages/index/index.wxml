@@ -1,0 +1,57 @@
+<view class="container">
+  <!-- <map
+    id="map"
+    style="width: 100%;height: 30vh" 
+    longitude="{{longitude}}" 
+    latitude="{{latitude}}" 
+    scale="18"
+    show-location
+  >
+  </map> -->
+  <image
+    style="width: 100%;height: 30vh;display:block"
+    mode="aspectFill"
+    src="/images/top.jpg"
+  ></image>
+  <view class="session-tab" bindtap="selectTab">
+    <view class="tab-wrapper">
+      <text class="tab-name {{showCurrent ? 'tab-select' : 'tab-normal'}}" data-tab-id="current" space="nbsp">    进行中的签到    </text>
+    </view>
+    <view class="tab-wrapper">
+      <text class="tab-name {{!showCurrent ? 'tab-select' : 'tab-normal'}}" data-tab-id="ended" space="nbsp">    已结束的签到    </text>
+    </view>
+  </view>
+  <block wx:for="{{showCurrent ? currentSign : historySign}}" wx:key="item">
+    <view class="sign-card color{{item.courseId % 10}}">
+      <view wx:if="{{item.state === 0}}" class="sign-state warn">未签到</view>
+      <view wx:if="{{item.state === 1}}" class="sign-state warn">待审核</view>
+      <view wx:if="{{item.state === 2}}" class="sign-state fail">签到失败</view>
+      <view wx:if="{{item.state === 3}}" class="sign-state success">签到成功</view>
+      <view class="sign-title">
+        <view class="title-tag"></view>
+        {{item.course}}
+      </view>
+      <view class="sign-text">任课教师：{{item.teacher}}</view>
+      <view class="sign-text">上课时间：{{item.time}}</view>
+      <view class="sign-text">上课地点：{{item.loc}}</view>
+      <view class="sign-text">发起时间：{{item.createtime}}</view>
+      <view class="sign-text" wx:if="{{!showCurrent}}">结束时间：{{item.endtime}}</view>
+      <view class="sign-scan" data-signid="{{item.signId}}" bindtap="handleScan" wx:if="{{showCurrent && (item.state === 0 || item.state === 2)}}">
+        <view class="scan-circle"></view>
+        <text class="iconfont icon-saoma scan-icon"></text>
+      </view>
+    </view>
+  </block>  
+  <block wx:if="{{(showCurrent && currentSign.length === 0) || (!showCurrent && historySign.length === 0)}}">
+    <view class="nodata">
+      <image src="/images/note.png"></image>
+      <block wx:if="{{showCurrent}}">
+        <view>请等待老师发起签到...</view>  
+        <view>(下拉可刷新列表)</view>
+      </block>
+      <block wx:else>
+        目前还没有已结束的签到
+      </block>
+    </view>
+  </block>
+</view>

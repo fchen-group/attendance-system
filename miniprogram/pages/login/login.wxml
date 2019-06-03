@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="title">
+    <image class="title-icon" src="/images/edit.png"></image>
+    <text class="title-text">优签到</text>
+  </view>
+  <view class="userinfo">
+    <view  class="userinfo-avatar">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <open-data type="userNickName" class="userinfo-nickname"></open-data>
+  </view> 
+  <view class="userlogin">
+    <input placeholder="请输入学号" bindinput="handleInputUsername"></input>
+    <input placeholder="请输入密码" type="password" bindinput="handleInputPassword"></input>
+    <button type="primary" loading="{{logining}}" bindtap="handleLogin">登录</button>
+  </view>   
+</view>

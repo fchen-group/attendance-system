@@ -1,0 +1,9 @@
+.collapse {
+  &__top{
+    cursor: pointer;
+  }
+  &__bottom {
+    overflow: hidden;
+    transition: max-height .2s ease-out;
+  }
+}

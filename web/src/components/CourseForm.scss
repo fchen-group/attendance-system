@@ -1,0 +1,11 @@
+.courseForm {
+  &__text {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  &__innerFormItem {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
