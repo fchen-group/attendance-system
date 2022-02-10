@@ -19,7 +19,7 @@
     "koa-views": "^6.1.4",
     "koa2-cors": "^2.0.6",
     "mysql": "^2.16.0",
-    "node-sass": "^4.9.4",
+    "node-sass": "^7.0.0",
     "qrcode.react": "^0.8.0",
     "react": "^16.6.0",
     "react-app-polyfill": "^0.2.1",
